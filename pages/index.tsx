@@ -1,5 +1,6 @@
 import { Box, TextInput } from "grommet";
 import React, { useEffect, useState } from "react";
+import Link from 'next/link'
 import UserCard from "../components/user.card";
 import { fetchStudents, Student } from "../services/students";
 
@@ -35,9 +36,11 @@ const Main: React.FC<Props> = ({}) => {
       <TextInput placeholder="type here" value={search} onChange={onChangeHandler} />
       <Box direction="row" wrap={true}>
         {students.map((s:Student) => (
+          <Link key={s.id}  href={`/student/${s.id}`}>
           <Box margin="10px">
               <UserCard user={s} />
           </Box>
+          </Link>
         ))}
       </Box>
     </Box>
